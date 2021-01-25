@@ -1,0 +1,58 @@
+<%- include('../components/header'); -%>
+    <main>
+
+        <!--================ register Area =================-->
+        <section class="login_part section_padding ">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="login_part_text text-center">
+                            <div class="login_part_text_iner">
+                                <h2>Already have account</h2>
+                                <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+                                <a href="/login" class="btn_3">Login</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="login_part_form">
+                            <div class="login_part_form_iner">
+                                <h3>New to our Shop</h3>
+                                <%- include('../components/messages', {messages: expressFlash}); -%>
+
+                                    <form id="register" class="row  no_border_form" action="/register_user" method="post" novalidate="novalidate">
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="text" class="form-control" id="firstname" name="firstname" value="" placeholder="First Name" required>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="text" class="form-control" id="lastname" name="lastname" value="" placeholder="Last Name" required>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="email" class="form-control" id="email" name="email" value="" placeholder="Email" required>
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password" required>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <button type="submit" value="submit" class="btn_3">
+                                                 Sign Up
+                                                </button>
+                                            <a class="lost_pass" href="#">forget password?</a>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#register").validate();
+        });
+    </script> -->
+
+    <%- include('../components/footer'); -%>

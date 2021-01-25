@@ -1,0 +1,118 @@
+<%- include('../components/header'); %>
+    <main>
+        <!--================Checkout Area =================-->
+        <section class="checkout_area " style="padding: 100px 0px;">
+            <div class="container">
+                <form id="checkout_form" method="post" action="/order_checkout">
+                    <%- include('../components/messages', {messages: expressFlash}); -%>
+                        <div class="billing_details">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h3>Shipping Address</h3>
+                                    <div class="row ">
+                                        <div class="col-md-6 form-group p_star">
+                                            <label for="first" class="required">First name</label>
+                                            <input type="text" class="form-control" id="first" name="firstname" placeholder="First name" required />
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <label for="first" class="required">Last name</label>
+                                            <input type="text" class="form-control" id="last" name="lastname" placeholder="Last name" required />
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <label for="first" class="required">Phone number</label>
+                                            <input type="text" class="form-control" id="number" name="phone" placeholder="Phone number" required />
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <label for="first" class="required">Email Address</label>
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="Email Address" required />
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <label for="first" class="required">Address line</label>
+                                            <input type="text" class="form-control" id="add1" name="address" placeholder="Address line" required />
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <label for="first">Address line 02</label>
+                                            <input type="text" class="form-control" id="add2" name="address_line_2" placeholder="Address line 02" />
+                                        </div>
+                                        <div class="col-md-12 form-group p_star">
+                                            <label for="first" class="required">City</label>
+                                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required />
+                                        </div>
+                                        <div class="col-md-6 form-group p_star">
+                                            <label for="first" class="required">State</label>
+                                            <input type="text" class="form-control" id="state" name="state" placeholder="State" required />
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label for="first" class="required">Pincode</label>
+                                            <input type="text" class="form-control" id="zip" name="pincode" placeholder="Pincode" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="order_box">
+                                        <h2>Your Order</h2>
+                                        <ul class="list">
+
+                                            <li>
+                                                <a style="cursor:default">Product
+                                        <span>Total</span>
+                                        </a>
+                                            </li>
+
+                                            <% for(var key in cart){ %>
+                                                <li>
+                                                    <a href="">
+                                                        <%- cart[key].name -%>
+                                                            <span class="middle">x <%- cart[key].qty -%></span>
+                                                            <span class="last">$<%- cart[key].qty * cart[key].price -%></span>
+                                                    </a>
+                                                </li>
+                                                <% } %>
+                                                    </li>
+                                        </ul>
+                                        <ul class="list list_2">
+                                            <li>
+                                                <a style="cursor:default">Subtotal
+                                        <span>$<%- sub_total -%></span>
+                                        </a>
+                                            </li>
+                                            <li>
+                                                <a style="cursor:default">Shipping
+                                    <span>Free Shipping</span>
+                                    </a>
+                                            </li>
+                                            <li>
+                                                <a style="cursor:default">Total
+                                    <span>$<%- sub_total -%></span>
+                                    </a>
+                                            </li>
+                                        </ul>
+                                        <div class="payment_item">
+                                            <div class="radion_btn">
+                                                <input type="radio" id="f-option5" name="payment_method" checked value="1" />
+                                                <label for="f-option5">Check On Delivery</label>
+                                                <div class="check"></div>
+                                            </div>
+                                            <p>
+                                                Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                                            </p>
+                                        </div>
+                                        <div class="creat_account">
+                                            <input type="checkbox" id="f-option4" name="term_and_condition" value="1" />
+                                            <label for="f-option4">I’ve read and accept the </label>
+                                            <a href="#">terms & conditions*</a>
+                                        </div>
+                                        <button type="submit" class="btn_3">Proceed to Order</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </section>
+        <!--================End Checkout Area =================-->
+    </main>
+    <script>
+        $("#checkout_form").validate({});
+    </script>
+    <%- include('../components/footer'); %>
